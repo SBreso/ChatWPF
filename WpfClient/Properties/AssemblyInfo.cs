@@ -4,52 +4,52 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
-// La información general de un ensamblado se controla mediante el siguiente 
-// conjunto de atributos. Cambie estos valores de atributo para modificar la información
-// asociada con un ensamblado.
-[assembly: AssemblyTitle("WpfClient")]
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("WPFClient")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WpfClient")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyProduct("WPFClient")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Si establece ComVisible en false, los tipos de este ensamblado no estarán visibles 
-// para los componentes COM.  Si necesita obtener acceso a un tipo de este ensamblado desde 
-// COM, establezca el atributo ComVisible en true en este tipo.
+// Setting ComVisible to false makes the types in this assembly not visible 
+// to COM components.  If you need to access a type in this assembly from 
+// COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-//Para comenzar a compilar aplicaciones que se puedan traducir, establezca 
-//<UICulture>CultureYouAreCodingWith</UICulture> en el archivo .csproj
-//dentro de <PropertyGroup>.  Por ejemplo, si utiliza inglés de EE.UU.
-//en los archivos de código fuente, establezca <UICulture> en en-US.  A continuación, quite la marca de comentario
-//del atributo NeutralResourceLanguage.  Actualice "en-US" en
-//la siguiente línea para que coincida con el valor UICulture del archivo de proyecto.
+//In order to begin building localizable applications, set 
+//<UICulture>CultureYouAreCodingWith</UICulture> in your .csproj file
+//inside a <PropertyGroup>.  For example, if you are using US english
+//in your source files, set the <UICulture> to en-US.  Then uncomment
+//the NeutralResourceLanguage attribute below.  Update the "en-US" in
+//the line below to match the UICulture setting in the project file.
 
 //[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
 
 
 [assembly: ThemeInfo(
-    ResourceDictionaryLocation.None, //donde se encuentran los diccionarios de recursos específicos del tema
-                                     //(se utiliza si no se encuentra ningún recurso en la página 
-                                     // ni diccionarios de recursos de la aplicación)
-    ResourceDictionaryLocation.SourceAssembly //donde se encuentra el diccionario de recursos genérico
-                                              //(se utiliza si no se encuentra ningún recurso en la página, 
-                                              // aplicación o diccionarios de recursos específicos del tema)
+    ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
+    //(used if a resource is not found in the page, 
+    // or application resource dictionaries)
+    ResourceDictionaryLocation.SourceAssembly //where the generic resource dictionary is located
+    //(used if a resource is not found in the page, 
+    // app, or any theme specific resource dictionaries)
 )]
 
 
-// La información de versión de un ensamblado consta de los cuatro valores siguientes:
+// Version information for an assembly consists of the following four values:
 //
-//      Versión principal
-//      Versión secundaria 
-//      Número de compilación
-//      Revisión
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
 //
-// Puede especificar todos los valores o usar los valores predeterminados de número de compilación y de revisión 
-// mediante el carácter '*', como se muestra a continuación:
+// You can specify all the values or you can default the Build and Revision Numbers 
+// by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
