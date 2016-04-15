@@ -51,7 +51,11 @@ namespace WPFClient
                     RichTextBoxConsole.AppendText(String.Format("{0}: {1}\r", name, message))
                 )
             );
+
             HubProxy.On("Exepaint", ()=>this.Dispatcher.Invoke(()=>ExecutePaint()));
+
+            HubProxy.On("ServerOrderDisconnect", () => Connection.Stop());
+
             try
             {
                 await Connection.Start();
@@ -113,6 +117,6 @@ namespace WPFClient
         public void ExecutePaint()
         {
             Process.Start(@"C:\Windows\System32\mspaint.exe");
-        }
+        }        
     }
 }

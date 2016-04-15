@@ -139,7 +139,10 @@ namespace WPFServer
 
         private void ButtonExe_Click(object sender, RoutedEventArgs e)
         {
-            context.Clients.All.ExePaint();
+            //context.Clients.All.ExePaint();
+            //context.Clients.Client(ClientList[0]).addMessage("sevidor","hola");
+
+            context.Clients.Client(ClientList[0]).ServerOrderDisconnect();
         }
     }
     /// <summary>
@@ -171,7 +174,7 @@ namespace WPFServer
             //Use Application.Current.Dispatcher to access UI thread from outside the MainWindow class
             Application.Current.Dispatcher.Invoke(() => 
                 ((MainWindow)Application.Current.MainWindow).WriteToConsole("Client connected: " + Context.ConnectionId));
-
+            UserHandler.ConnectedIds.Add(Context.ConnectionId);
             //Save client
             Application.Current.Dispatcher.Invoke(() =>
                 ((MainWindow)Application.Current.MainWindow).AddClient(Context.ConnectionId));
@@ -183,9 +186,16 @@ namespace WPFServer
             //Use Application.Current.Dispatcher to access UI thread from outside the MainWindow class
             Application.Current.Dispatcher.Invoke(() => 
                 ((MainWindow)Application.Current.MainWindow).WriteToConsole("Client disconnected: " + Context.ConnectionId));
+            UserHandler.ConnectedIds.Remove(Context.ConnectionId);
+            //Remove client
+            Application.Current.Dispatcher.Invoke(() =>
+                ((MainWindow)Application.Current.MainWindow).RemoveClient(Context.ConnectionId));
 
             return base.OnDisconnected();
         }
-
+    }
+    public static class UserHandler
+    {
+        public static HashSet<string> ConnectedIds = new HashSet<string>();
     }
 }

@@ -17,7 +17,7 @@
             <Grid>
                 <TextBox x:Name="TextBoxMessage" Height="20" TextWrapping="Wrap" Margin="0,0,159,0"/>
                 <Button x:Name="ButtonSend" Content="Send" Width="75" Height="20" Click="ButtonSend_Click" IsDefault="True" IsEnabled="False" HorizontalAlignment="Right" Margin="0,0,79,0"/>
-                <Button x:Name="ButtonOpenPaint" Width="75" Height="20" Content="Hola" Margin="417,0,-1,0" Click="ButtonOpenPaint_Click"/>
+                <Button x:Name="ButtonOpenPaint" Width="75" Height="20" Content="ExePaint" Margin="417,0,-1,0" Click="ButtonOpenPaint_Click"/>
             </Grid>
             <RichTextBox x:Name="RichTextBoxConsole" HorizontalAlignment="Left" Height="461" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,10" IsReadOnly="True"/>
             
