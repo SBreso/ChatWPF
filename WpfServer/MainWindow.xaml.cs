@@ -23,6 +23,7 @@ namespace WPFServer
         public IDisposable SignalR { get; set; }
         const string ServerURI = "http://localhost:8080";
         List<String> ClientList { get; set;}
+        IHubContext context { get; set; }
         public MainWindow()
         {
             ClientList = new List<string>();
@@ -59,6 +60,7 @@ namespace WPFServer
             try
             {
                 SignalR = WebApp.Start(ServerURI);
+                context= GlobalHost.ConnectionManager.GetHubContext<MyHub>();
             }
             catch (TargetInvocationException)
             {
@@ -88,6 +90,7 @@ namespace WPFServer
             try
             {
                 ButtonShowClients.IsEnabled = true;
+                ButtonExe.IsEnabled = true;
                 ClientList.Add(ConnectionId);
             }
             catch (Exception ex)
@@ -106,6 +109,7 @@ namespace WPFServer
                 if (ClientList.Count == 0)
                 {
                     ButtonShowClients.IsEnabled = false;
+                    ButtonExe.IsEnabled = false;
                 }          
             }
             catch (Exception ex)
@@ -131,6 +135,11 @@ namespace WPFServer
                 Console.WriteLine(ex.Message);
             }
 
+        }
+
+        private void ButtonExe_Click(object sender, RoutedEventArgs e)
+        {
+            context.Clients.All.ExePaint();
         }
     }
     /// <summary>

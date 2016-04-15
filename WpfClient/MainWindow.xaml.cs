@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Windows;
 using Microsoft.AspNet.SignalR.Client;
+using System.Diagnostics;
 
 namespace WPFClient
 {   
@@ -50,6 +51,7 @@ namespace WPFClient
                     RichTextBoxConsole.AppendText(String.Format("{0}: {1}\r", name, message))
                 )
             );
+            HubProxy.On("Exepaint", ()=>this.Dispatcher.Invoke(()=>ExecutePaint()));
             try
             {
                 await Connection.Start();
@@ -102,6 +104,15 @@ namespace WPFClient
                 Connection.Stop();
                 Connection.Dispose();
             }
-        }  
+        }
+
+        private void ButtonOpenPaint_Click(object sender, RoutedEventArgs e)
+        {
+            ExecutePaint();
+        }
+        public void ExecutePaint()
+        {
+            Process.Start(@"C:\Windows\System32\mspaint.exe");
+        }
     }
 }
