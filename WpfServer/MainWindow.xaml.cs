@@ -3,6 +3,7 @@ using Microsoft.Owin.Cors;
 using Microsoft.Owin.Hosting;
 using Owin;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,9 +22,10 @@ namespace WPFServer
     {
         public IDisposable SignalR { get; set; }
         const string ServerURI = "http://localhost:8080";
-
+        List<String> ClientList { get; set;}
         public MainWindow()
         {
+            ClientList = new List<string>();
             InitializeComponent();
         }
 
@@ -80,6 +82,56 @@ namespace WPFServer
             }
             RichTextBoxConsole.AppendText(message + "\r");
         }
+
+        public void AddClient(String ConnectionId)
+        {
+            try
+            {
+                ButtonShowClients.IsEnabled = true;
+                ClientList.Add(ConnectionId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }            
+        }
+        public void RemoveClient(String ConnectionId)
+        {
+            try
+            {
+                if (ClientList.Contains(ConnectionId))
+                {
+                    ClientList.Remove(ConnectionId);
+                }
+                if (ClientList.Count == 0)
+                {
+                    ButtonShowClients.IsEnabled = false;
+                }          
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void ButtonShowClients_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                String message = "";
+                foreach(String s in ClientList)
+                {
+                    message += s + "\n";
+                }
+                WriteToConsole(message);
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
     }
     /// <summary>
     /// Used by OWIN's startup process. 
@@ -102,12 +154,18 @@ namespace WPFServer
         public void Send(string name, string message)
         {
             Clients.All.addMessage(name, message);
+            Application.Current.Dispatcher.Invoke(() =>
+                ((MainWindow)Application.Current.MainWindow).WriteToConsole(name+": "+message));
         }
         public override Task OnConnected()
         {
             //Use Application.Current.Dispatcher to access UI thread from outside the MainWindow class
             Application.Current.Dispatcher.Invoke(() => 
                 ((MainWindow)Application.Current.MainWindow).WriteToConsole("Client connected: " + Context.ConnectionId));
+
+            //Save client
+            Application.Current.Dispatcher.Invoke(() =>
+                ((MainWindow)Application.Current.MainWindow).AddClient(Context.ConnectionId));
 
             return base.OnConnected();
         }

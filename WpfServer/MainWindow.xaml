@@ -1,12 +1,13 @@
 ﻿<Window x:Class="WPFServer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WPF SignalR Server" Height="319" Width="343  ">
-    <Grid>
+        Title="WPF SignalR Server" Height="319" Width="458.785">
+    <Grid Margin="0,0,11,0">
 
         <Button x:Name="ButtonStart" Content="Start" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="ButtonStart_Click"/>
         <Button x:Name="ButtonStop" Content="Stop" HorizontalAlignment="Left" Margin="225,10,0,0" VerticalAlignment="Top" Width="100" Click="ButtonStop_Click" IsEnabled="False"/>
-        <RichTextBox x:Name="RichTextBoxConsole" HorizontalAlignment="Left" Height="243" Margin="10,35,0,0" VerticalAlignment="Top" Width="315">
+        <Button x:Name="ButtonShowClients" Content="ShowClients" HorizontalAlignment="Left" Margin="330,10,0,0" VerticalAlignment="Top" Width="100" IsEnabled="False" Click="ButtonShowClients_Click"/>
+        <RichTextBox x:Name="RichTextBoxConsole" HorizontalAlignment="Left" Height="243" Margin="10,35,0,0" VerticalAlignment="Top" Width="420">
             <FlowDocument>
                 <Paragraph>
                 </Paragraph>
